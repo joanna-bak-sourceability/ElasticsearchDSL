@@ -14,6 +14,7 @@ namespace ONGR\ElasticsearchDSL\Tests\Unit\Query\Compound;
 use ONGR\ElasticsearchDSL\Query\Compound\BoolQuery;
 use ONGR\ElasticsearchDSL\Query\MatchAllQuery;
 use ONGR\ElasticsearchDSL\Query\TermLevel\TermQuery;
+use UnexpectedValueException;
 
 /**
  * Unit test for Bool.
@@ -22,12 +23,11 @@ class BoolQueryTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Test for addToBool() without setting a correct bool operator.
-     *
-     * @expectedException        \UnexpectedValueException
-     * @expectedExceptionMessage The bool operator acme is not supported
      */
     public function testBoolAddToBoolException()
     {
+        $this->expectException(UnexpectedValueException::class);
+        $this->expectExceptionMessage('The bool operator acme is not supported');
         $bool = new BoolQuery();
         $bool->add(new MatchAllQuery(), 'acme');
     }
@@ -81,12 +81,11 @@ class BoolQueryTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Tests exception thrown if invalid BoolQuery type key is specified
-     *
-     * @expectedException        \UnexpectedValueException
-     * @expectedExceptionMessage The bool operator acme is not supported
      */
     public function testBoolConstructorException()
     {
+        $this->expectException(UnexpectedValueException::class);
+        $this->expectExceptionMessage('The bool operator acme is not supported');
         new BoolQuery([
             'acme' => [new TermQuery('key1', 'value1')],
         ]);
@@ -190,7 +189,7 @@ class BoolQueryTest extends \PHPUnit\Framework\TestCase
     {
         $bool = new BoolQuery();
 
-        $this->assertInternalType('array', $bool->getQueries());
+        $this->assertIsArray($bool->getQueries());
     }
 
     /**
@@ -215,7 +214,7 @@ class BoolQueryTest extends \PHPUnit\Framework\TestCase
     {
         $bool = new BoolQuery();
 
-        $this->assertInternalType('array', $bool->getQueries(BoolQuery::MUST));
+        $this->assertIsArray($bool->getQueries(BoolQuery::MUST));
     }
 
     /**

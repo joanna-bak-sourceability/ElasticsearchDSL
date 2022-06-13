@@ -11,6 +11,7 @@
 
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Aggregation\Pipeline;
 
+use LogicException;
 use ONGR\ElasticsearchDSL\Aggregation\Pipeline\BucketScriptAggregation;
 
 /**
@@ -50,12 +51,11 @@ class BucketScriptAggregationTest extends \PHPUnit\Framework\TestCase
     /**
      * Tests if the exception is thrown in getArray method if no
      * buckets_path or script is set
-     *
-     * @expectedException \LogicException
-     * @expectedExceptionMessage `test` aggregation must have script set.
      */
     public function testGetArrayException()
     {
+        $this->expectException(LogicException::class);
+        $this->expectExceptionMessage('`test` aggregation must have script set.');
         $agg = new BucketScriptAggregation('test', []);
 
         $agg->getArray();

@@ -11,6 +11,7 @@
 
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Bucketing\Aggregation;
 
+use LogicException;
 use ONGR\ElasticsearchDSL\Aggregation\Bucketing\GeoHashGridAggregation;
 
 /**
@@ -20,11 +21,10 @@ class GeoHashGridAggregationTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Test if exception is thrown.
-     *
-     * @expectedException \LogicException
      */
     public function testGeoHashGridAggregationException()
     {
+        $this->expectException(LogicException::class);
         $agg = new GeoHashGridAggregation('test_agg');
         $agg->getArray();
     }

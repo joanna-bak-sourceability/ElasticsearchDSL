@@ -11,6 +11,7 @@
 
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Metric\Aggregation;
 
+use LogicException;
 use ONGR\ElasticsearchDSL\Aggregation\Metric\GeoBoundsAggregation;
 
 /**
@@ -20,11 +21,10 @@ class GeoBoundsAggregationTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Test if exception is thrown.
-     *
-     * @expectedException \LogicException
      */
     public function testGeoBoundsAggregationException()
     {
+        $this->expectException(LogicException::class);
         $agg = new GeoBoundsAggregation('test_agg');
         $agg->getArray();
     }

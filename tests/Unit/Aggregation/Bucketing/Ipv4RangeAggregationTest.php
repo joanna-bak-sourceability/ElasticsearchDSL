@@ -11,17 +11,17 @@
 
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Bucketing\Aggregation;
 
+use LogicException;
 use ONGR\ElasticsearchDSL\Aggregation\Bucketing\Ipv4RangeAggregation;
 
 class Ipv4RangeAggregationTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Test exception when field and range are not set.
-     *
-     * @expectedException \LogicException
      */
     public function testIfExceptionIsThrownWhenFieldAndRangeAreNotSet()
     {
+        $this->expectException(LogicException::class);
         $agg = new Ipv4RangeAggregation('foo');
         $agg->toArray();
     }

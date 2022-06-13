@@ -11,6 +11,7 @@
 
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Bucketing\Aggregation;
 
+use LogicException;
 use ONGR\ElasticsearchDSL\Aggregation\Bucketing\DateHistogramAggregation;
 
 /**
@@ -20,11 +21,10 @@ class DateHistogramAggregationTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Tests if ChildrenAggregation#getArray throws exception when expected.
-     *
-     * @expectedException \LogicException
      */
     public function testGetArrayException()
     {
+        $this->expectException(LogicException::class);
         $aggregation = new DateHistogramAggregation('foo');
         $aggregation->getArray();
     }

@@ -11,6 +11,7 @@
 
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Query\Specialized;
 
+use InvalidArgumentException;
 use ONGR\ElasticsearchDSL\Query\Specialized\TemplateQuery;
 
 /**
@@ -56,11 +57,10 @@ class TemplateQueryTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Tests toArray() exception
-     *
-     * @expectedException \InvalidArgumentException
      */
     public function testToArrayException()
     {
+        $this->expectException(InvalidArgumentException::class);
         $query = new TemplateQuery();
         $query->toArray();
     }
