@@ -104,7 +104,7 @@ class OrderedSerializer implements NormalizerInterface, DenormalizerInterface
     /**
      * {@inheritdoc}
      */
-    public function supportsDenormalization($data, string $type, string $format = null, array $context = [])
+    public function supportsDenormalization($data, $type, $format = null)
     {
         return $this->serializer->supportsDenormalization($data, $format);
     }
@@ -112,8 +112,8 @@ class OrderedSerializer implements NormalizerInterface, DenormalizerInterface
     /**
      * {@inheritdoc}
      */
-    public function supportsNormalization($data, string $format = null, array $context = [])
+    public function supportsNormalization($data, $format = null)
     {
-        return $this->serializer->supportsNormalization($data, $format, $context);
+        return $this->serializer->supportsNormalization($data, $format);
     }
 }
