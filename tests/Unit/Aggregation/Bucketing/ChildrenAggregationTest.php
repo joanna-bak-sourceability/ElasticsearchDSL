@@ -11,7 +11,6 @@
 
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Bucketing\Aggregation;
 
-use LogicException;
 use ONGR\ElasticsearchDSL\Aggregation\Bucketing\ChildrenAggregation;
 
 /**
@@ -24,7 +23,7 @@ class ChildrenAggregationTest extends \PHPUnit\Framework\TestCase
      */
     public function testGetArrayException()
     {
-        $this->expectException(LogicException::class);
+        $this->expectException(\LogicException::class);
         $aggregation = new ChildrenAggregation('foo');
         $aggregation->getArray();
     }

@@ -11,7 +11,6 @@
 
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Metric\Aggregation;
 
-use LogicException;
 use ONGR\ElasticsearchDSL\Aggregation\Metric\CardinalityAggregation;
 
 /**
@@ -56,7 +55,7 @@ class CardinalityAggregationTest extends \PHPUnit\Framework\TestCase
      */
     public function testGetArrayException()
     {
-        $this->expectException(LogicException::class);
+        $this->expectException(\LogicException::class);
         $this->expectExceptionMessage('Cardinality aggregation must have field or script set.');
         $aggregation = new CardinalityAggregation('bar');
         $aggregation->getArray();

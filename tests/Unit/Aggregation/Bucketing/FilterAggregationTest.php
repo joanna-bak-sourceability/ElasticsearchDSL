@@ -11,7 +11,6 @@
 
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Bucketing\Aggregation;
 
-use LogicException;
 use ONGR\ElasticsearchDSL\Aggregation\Bucketing\FilterAggregation;
 use ONGR\ElasticsearchDSL\Aggregation\Bucketing\HistogramAggregation;
 use ONGR\ElasticsearchDSL\Query\Compound\BoolQuery;
@@ -105,7 +104,7 @@ class FilterAggregationTest extends \PHPUnit\Framework\TestCase
      */
     public function testSetField()
     {
-        $this->expectException(LogicException::class);
+        $this->expectException(\LogicException::class);
         $this->expectExceptionMessage('doesn\'t support `field` parameter');
         $aggregation = new FilterAggregation('test_agg');
         $aggregation->setField('test_field');
@@ -116,7 +115,7 @@ class FilterAggregationTest extends \PHPUnit\Framework\TestCase
      */
     public function testToArrayNoFilter()
     {
-        $this->expectException(LogicException::class);
+        $this->expectException(\LogicException::class);
         $this->expectExceptionMessage('has no filter added');
         $aggregation = new FilterAggregation('test_agg');
         $result = $aggregation->toArray();

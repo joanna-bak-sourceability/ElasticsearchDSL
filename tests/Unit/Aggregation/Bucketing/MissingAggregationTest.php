@@ -11,7 +11,6 @@
 
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Bucketing\Aggregation;
 
-use LogicException;
 use ONGR\ElasticsearchDSL\Aggregation\Bucketing\MissingAggregation;
 
 class MissingAggregationTest extends \PHPUnit\Framework\TestCase
@@ -21,7 +20,7 @@ class MissingAggregationTest extends \PHPUnit\Framework\TestCase
      */
     public function testIfExceptionIsThrown()
     {
-        $this->expectException(LogicException::class);
+        $this->expectException(\LogicException::class);
         $this->expectExceptionMessage('Missing aggregation must have a field set.');
         $agg = new MissingAggregation('test_agg');
         $agg->getArray();

@@ -14,7 +14,6 @@ namespace ONGR\ElasticsearchDSL\Tests\Unit\Query\Compound;
 use ONGR\ElasticsearchDSL\Query\Compound\BoolQuery;
 use ONGR\ElasticsearchDSL\Query\MatchAllQuery;
 use ONGR\ElasticsearchDSL\Query\TermLevel\TermQuery;
-use UnexpectedValueException;
 
 /**
  * Unit test for Bool.
@@ -26,7 +25,7 @@ class BoolQueryTest extends \PHPUnit\Framework\TestCase
      */
     public function testBoolAddToBoolException()
     {
-        $this->expectException(UnexpectedValueException::class);
+        $this->expectException(\UnexpectedValueException::class);
         $this->expectExceptionMessage('The bool operator acme is not supported');
         $bool = new BoolQuery();
         $bool->add(new MatchAllQuery(), 'acme');
@@ -84,7 +83,7 @@ class BoolQueryTest extends \PHPUnit\Framework\TestCase
      */
     public function testBoolConstructorException()
     {
-        $this->expectException(UnexpectedValueException::class);
+        $this->expectException(\UnexpectedValueException::class);
         $this->expectExceptionMessage('The bool operator acme is not supported');
         new BoolQuery([
             'acme' => [new TermQuery('key1', 'value1')],

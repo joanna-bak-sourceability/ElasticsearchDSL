@@ -11,9 +11,7 @@
 
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Metric\Aggregation;
 
-use LogicException;
 use ONGR\ElasticsearchDSL\Aggregation\Metric\PercentileRanksAggregation;
-use phpDocumentor\Reflection\Types\Void_;
 
 /**
  * Percentile ranks aggregation unit tests.
@@ -38,7 +36,7 @@ class PercentileRanksAggregationTest extends \PHPUnit\Framework\TestCase
      */
     public function testIfPercentileRanksAggregationThrowsAnException()
     {
-        $this->expectException(LogicException::class);
+        $this->expectException(\LogicException::class);
         $this->agg->toArray();
     }
 
@@ -47,7 +45,7 @@ class PercentileRanksAggregationTest extends \PHPUnit\Framework\TestCase
      */
     public function testIfExceptionIsThrownWhenFieldSetAndValueNotSet()
     {
-        $this->expectException(LogicException::class);
+        $this->expectException(\LogicException::class);
         $this->agg->setField('bar');
         $this->agg->toArray();
     }
@@ -57,7 +55,7 @@ class PercentileRanksAggregationTest extends \PHPUnit\Framework\TestCase
      */
     public function testIfExceptionIsThrownWhenScriptSetAndValueNotSet()
     {
-        $this->expectException(LogicException::class);
+        $this->expectException(\LogicException::class);
         $this->agg->setScript('bar');
         $this->agg->toArray();
     }

@@ -11,7 +11,6 @@
 
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Metric\Aggregation;
 
-use LogicException;
 use ONGR\ElasticsearchDSL\Aggregation\Metric\GeoCentroidAggregation;
 
 /**
@@ -24,7 +23,7 @@ class GeoCentroidAggregationTest extends \PHPUnit\Framework\TestCase
      */
     public function testGetArrayException()
     {
-        $this->expectException(LogicException::class);
+        $this->expectException(\LogicException::class);
         $aggregation = new GeoCentroidAggregation('foo');
         $aggregation->getArray();
     }

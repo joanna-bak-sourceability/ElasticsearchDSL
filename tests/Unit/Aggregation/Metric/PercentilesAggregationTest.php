@@ -11,7 +11,6 @@
 
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Metric\Aggregation;
 
-use LogicException;
 use ONGR\ElasticsearchDSL\Aggregation\Metric\PercentilesAggregation;
 
 class PercentilesAggregationTest extends \PHPUnit\Framework\TestCase
@@ -21,7 +20,7 @@ class PercentilesAggregationTest extends \PHPUnit\Framework\TestCase
      */
     public function testPercentilesAggregationGetArrayException()
     {
-        $this->expectException(LogicException::class);
+        $this->expectException(\LogicException::class);
         $this->expectExceptionMessage('Percentiles aggregation must have field or script set.');
         $aggregation = new PercentilesAggregation('bar');
         $aggregation->getArray();

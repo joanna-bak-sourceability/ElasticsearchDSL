@@ -11,7 +11,6 @@
 
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Query\Geo;
 
-use LogicException;
 use ONGR\ElasticsearchDSL\Query\Geo\GeoBoundingBoxQuery;
 
 class GeoBoundingBoxQueryTest extends \PHPUnit\Framework\TestCase
@@ -21,7 +20,7 @@ class GeoBoundingBoxQueryTest extends \PHPUnit\Framework\TestCase
      */
     public function testGeoBoundBoxQueryException()
     {
-        $this->expectException(LogicException::class);
+        $this->expectException(\LogicException::class);
         $query = new GeoBoundingBoxQuery('location', []);
         $query->toArray();
     }
